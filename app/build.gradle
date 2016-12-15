@@ -3,18 +3,39 @@ apply plugin: 'com.android.application'
 android {
     compileSdkVersion 25
     buildToolsVersion "25.0.0"
+
+    signingConfigs {
+        debug {
+            storeFile new File(rootDir, "debug.keystore")
+            storePassword "debugStorePassword"
+            keyAlias "debugkey"
+            keyPassword "debugKeyPassword"
+        }
+        release {
+            //todo
+        }
+    }
+
     defaultConfig {
         applicationId "com.richluick.foode"
         minSdkVersion 15
         targetSdkVersion 25
-        versionCode 1
+        versionCode 1 //todo: use gradle.propertoes
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
-        release {
+        debug {
+            applicationIdSuffix ".debug"
+            testCoverageEnabled testCoverage.toBoolean()
             minifyEnabled false
+            signingConfig signingConfigs.debug
+        }
+        release {
+            testCoverageEnabled false
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
         }
     }
 }
@@ -31,6 +52,7 @@ dependencies {
     compile 'com.squareup.retrofit2:retrofit:2.1.0'
     compile 'com.squareup.okhttp3:okhttp:3.5.0'
     compile 'com.github.bumptech.glide:glide:3.7.0'
+    compile 'com.google.code.gson:gson:2.8.0'
 
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
