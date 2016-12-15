@@ -4,18 +4,6 @@ android {
     compileSdkVersion 25
     buildToolsVersion "25.0.0"
 
-    signingConfigs {
-        debug {
-            storeFile new File(rootDir, "debug.keystore")
-            storePassword "debugStorePassword"
-            keyAlias "debugkey"
-            keyPassword "debugKeyPassword"
-        }
-        release {
-            //todo
-        }
-    }
-
     defaultConfig {
         applicationId "com.richluick.foode"
         minSdkVersion 15
@@ -24,20 +12,34 @@ android {
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
+
     buildTypes {
         debug {
             applicationIdSuffix ".debug"
             testCoverageEnabled testCoverage.toBoolean()
             minifyEnabled false
-            signingConfig signingConfigs.debug
+//            signingConfig signingConfigs.debug
         }
         release {
             testCoverageEnabled false
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-            signingConfig signingConfigs.release
+//            signingConfig signingConfigs.release
         }
     }
+
+
+//    signingConfigs {
+//        debug {
+//            storeFile new File(rootDir, "debug.keystore")
+//            storePassword "debugStorePassword"
+//            keyAlias "debugkey"
+//            keyPassword "debugKeyPassword"
+//        }
+//        release {
+//            //todo
+//        }
+//    }
 }
 
 dependencies {
