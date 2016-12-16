@@ -10,6 +10,7 @@ import javax.inject.Inject;
 
 public class FirebaseRCUseCaseImpl implements FirebaseRCUseCase {
 
+    //todo: inject firebase?? makes more testable
     @Inject
     public FirebaseRCUseCaseImpl() {}
 
