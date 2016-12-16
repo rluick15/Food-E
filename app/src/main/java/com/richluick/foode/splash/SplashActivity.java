@@ -21,6 +21,8 @@ public class SplashActivity extends BaseActivity implements SplashView {
         setContentView(R.layout.activity_splash);;
 
         injectDependencies();
+
+        splashPresenter.downloadSettingsFromFirebase();
     }
 
     /**
@@ -29,7 +31,7 @@ public class SplashActivity extends BaseActivity implements SplashView {
     private void injectDependencies() {
         SplashComponent.Builder builder = (SplashComponent.Builder)
                 ((SubcomponentBuilderProvider) getApplication()).getSubcomponentBuilder(SplashComponent.Builder.class);
-        builder.buildSplashModule(new SplashModule(this)).build().inject(this);
+        builder.buildSplashModule(new SplashModule(this, this)).build().inject(this);
     }
 
     @Override

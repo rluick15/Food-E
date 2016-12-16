@@ -8,4 +8,5 @@ import com.richluick.foode.view.View;
  * View interface for the splash screen
  */
 public interface SplashView extends View {
+
 }

@@ -1,6 +1,10 @@
 package com.richluick.foode.splash.di;
 
+import android.content.Context;
+
 import com.richluick.foode.di.scope.ScreenScope;
+import com.richluick.foode.splash.SplashNavigator;
+import com.richluick.foode.splash.SplashNavigatorImpl;
 import com.richluick.foode.splash.SplashPresenter;
 import com.richluick.foode.splash.SplashPresenterImpl;
 import com.richluick.foode.splash.SplashView;
@@ -17,9 +21,17 @@ import dagger.Provides;
 public class SplashModule {
 
     private SplashView splashView;
+    private Context context;
 
-    public SplashModule(SplashView splashView) {
+    public SplashModule(SplashView splashView, Context context) {
         this.splashView = splashView;
+        this.context = context;
+    }
+
+    @Provides
+    @ScreenScope
+    Context provideSplashContext() {
+        return context;
     }
 
     @Provides
@@ -32,5 +44,11 @@ public class SplashModule {
     @ScreenScope
     SplashPresenter provideSplashPresenter(SplashPresenterImpl presenter) {
         return presenter;
+    }
+
+    @Provides
+    @ScreenScope
+    SplashNavigator provideSplashNavigator(SplashNavigatorImpl splashNavigator) {
+        return splashNavigator;
     }
 }

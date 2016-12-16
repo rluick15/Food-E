@@ -8,4 +8,6 @@ import com.richluick.foode.presenter.Presenter;
  * The presenter interface for the splash screen
  */
 public interface SplashPresenter extends Presenter {
+
+    void downloadSettingsFromFirebase();
 }
