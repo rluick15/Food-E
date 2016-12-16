@@ -11,17 +11,20 @@ import javax.inject.Inject;
  *
  * The splash presenter interface implementaion containg logic for the splash screen page
  */
-public class SplashPresenterImpl implements SplashPresenter, UseCaseCallback {
+public class SplashPresenterImpl implements SplashPresenter, UseCaseCallback<Object> {
 
-    private static final int SPLASH_DELAY_TIME_MILLIS = 4000;
+    private static final int SPLASH_DELAY_TIME_MILLIS = 3000;
 
     private SplashView splashView;
     private SplashNavigator splashNavigator;
+    private FirebaseRCUseCase firebaseRCUseCase;
 
     @Inject
-    public SplashPresenterImpl(SplashView splashView, SplashNavigator splashNavigator) {
+    public SplashPresenterImpl(SplashView splashView, SplashNavigator splashNavigator,
+                               FirebaseRCUseCase firebaseRCUseCase) {
         this.splashView = splashView;
         this.splashNavigator = splashNavigator;
+        this.firebaseRCUseCase = firebaseRCUseCase;
     }
 
     @Override
@@ -39,7 +42,7 @@ public class SplashPresenterImpl implements SplashPresenter, UseCaseCallback {
      */
     @Override
     public void downloadSettingsFromFirebase() {
-
+        firebaseRCUseCase.execute(this);
     }
 
     @Override

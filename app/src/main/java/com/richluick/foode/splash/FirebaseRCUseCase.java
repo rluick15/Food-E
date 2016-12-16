@@ -8,5 +8,5 @@ import com.richluick.foode.usecase.SimpleUseCase;
  * The usecase used to fetch the firebase remote config app settings from the firebase server. We
  * can put any specific methods here for implementaion. This will extend SimpleUseCase
  */
-public interface FirebaseRCUseCase extends SimpleUseCase {
+public interface FirebaseRCUseCase extends SimpleUseCase<Object> {
 }

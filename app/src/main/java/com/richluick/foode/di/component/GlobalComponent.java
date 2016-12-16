@@ -2,6 +2,7 @@ package com.richluick.foode.di.component;
 
 import com.richluick.foode.FoodeApplication;
 import com.richluick.foode.di.module.AndroidContextModule;
+import com.richluick.foode.di.module.FirebaseModule;
 import com.richluick.foode.di.scope.ApplicationScope;
 
 import dagger.Component;
@@ -15,7 +16,8 @@ import dagger.Component;
  */
 @Component(modules = {
         GlobalComponentBinders.class,
-        AndroidContextModule.class
+        AndroidContextModule.class,
+        FirebaseModule.class
 })
 @ApplicationScope
 public interface GlobalComponent {
