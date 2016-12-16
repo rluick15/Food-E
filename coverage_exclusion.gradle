@@ -1,3 +1,14 @@
 ext.pureExclusionArray = [
-        
+
+        '**/*_Factory.class',
+        '**/*_MembersInjector.class',
+        '**/*_Provide*.class',
+        '**/BuildConfig.*',
+        '**/Manifest.*',
+        '**/android/support/*',
+        '**/com/richluick/foode/R*.class',
+
+        //exclude dagger related code
+        '**/com/richluick/foode/di',
+        '**/com/richluick/foode/splash/di',
 ]
