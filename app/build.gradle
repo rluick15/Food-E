@@ -63,3 +63,6 @@ dependencies {
     testCompile "org.mockito:mockito-core:2.3.0"
 
 }
+
+apply from: '../coverage_exclusion.gradle'
+apply from: '../jacoco.gradle'

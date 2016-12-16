@@ -1,0 +1,51 @@
+apply plugin: 'jacoco'
+
+jacoco {
+    toolVersion = "0.7.4.201502262128"
+}
+
+project.afterEvaluate {
+
+    //get all build types. For us this is just debug and release of which we will only use debug
+    //we can add more later if needed. We can also account for flavors if that ever happens
+    def buildTypes = android.buildTypes.collect { type ->
+        type.name
+    }
+
+    buildTypes.each { buildTypeName ->
+
+        if(!buildTypeName.equals("release")) {
+            def testTaskName = "test${buildTypeName.capitalize()}UnitTest"
+            def androidTestTaskName = "connected${buildTypeName.capitalize()}AndroidTest"
+
+            //coverage task
+            task "${buildTypeName}TestCoverage"(type: JacocoReport) {
+                dependsOn testTaskName
+                //todo: add this in when we have espresso tests
+                //dependsOn androidTestTaskName
+
+                reports {
+                    xml.enabled = true
+                    html.enabled = true
+                }
+
+                group = "Coverage"
+
+                classDirectories = fileTree(
+                        dir: "${project.buildDir}/intermediates/classes/${buildTypeName}",
+                        excludes: project.pureExclusionArray
+                )
+
+                def coverageSourceDirs = [
+                        "src/main/java",
+                        "src/$buildTypeName/java"
+                ]
+
+                additionalSourceDirs = files(coverageSourceDirs)
+                sourceDirectories = files(coverageSourceDirs)
+                executionData = files(["${project.buildDir}/jacoco/${testTaskName}.exec"])
+                //todo: add in espresso report once tests are created
+            }
+        }
+    }
+}
