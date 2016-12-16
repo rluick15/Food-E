@@ -11,8 +11,7 @@ import javax.inject.Inject;
 public class FirebaseRCUseCaseImpl implements FirebaseRCUseCase {
 
     @Inject
-    public FirebaseRCUseCaseImpl() {
-    }
+    public FirebaseRCUseCaseImpl() {}
 
     @Override
     public void execute(UseCaseCallback<Object> callback) {

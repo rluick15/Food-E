@@ -1,6 +1,7 @@
 package com.richluick.foode.splash.di;
 
 import android.content.Context;
+import android.os.Handler;
 
 import com.richluick.foode.di.scope.ScreenScope;
 import com.richluick.foode.splash.SplashNavigator;
@@ -50,5 +51,11 @@ public class SplashModule {
     @ScreenScope
     SplashNavigator provideSplashNavigator(SplashNavigatorImpl splashNavigator) {
         return splashNavigator;
+    }
+
+    @Provides
+    @ScreenScope
+    Handler provideSplashHandler() {
+        return new Handler();
     }
 }

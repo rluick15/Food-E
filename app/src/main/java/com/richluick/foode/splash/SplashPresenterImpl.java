@@ -18,13 +18,15 @@ public class SplashPresenterImpl implements SplashPresenter, UseCaseCallback<Obj
     private SplashView splashView;
     private SplashNavigator splashNavigator;
     private FirebaseRCUseCase firebaseRCUseCase;
+    private Handler handler;
 
     @Inject
     public SplashPresenterImpl(SplashView splashView, SplashNavigator splashNavigator,
-                               FirebaseRCUseCase firebaseRCUseCase) {
+                               FirebaseRCUseCase firebaseRCUseCase, Handler handler) {
         this.splashView = splashView;
         this.splashNavigator = splashNavigator;
         this.firebaseRCUseCase = firebaseRCUseCase;
+        this.handler = handler;
     }
 
     @Override
@@ -47,7 +49,7 @@ public class SplashPresenterImpl implements SplashPresenter, UseCaseCallback<Obj
 
     @Override
     public void onCompleted(Object result) {
-        new Handler().postDelayed(new Runnable() {
+        handler.postDelayed(new Runnable() {
             @Override
             public void run() {
                 splashNavigator.goToMainPage();
