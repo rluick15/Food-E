@@ -1,7 +1,7 @@
 apply plugin: 'jacoco'
 
 jacoco {
-    toolVersion = "0.7.4.201502262128"
+    toolVersion = "0.7.8"
 }
 
 project.afterEvaluate {
@@ -21,8 +21,7 @@ project.afterEvaluate {
             //coverage task
             task "${buildTypeName}TestCoverage"(type: JacocoReport) {
                 dependsOn testTaskName
-                //todo: add this in when we have espresso tests
-                //dependsOn androidTestTaskName
+                dependsOn androidTestTaskName
 
                 reports {
                     xml.enabled = true
@@ -43,8 +42,11 @@ project.afterEvaluate {
 
                 additionalSourceDirs = files(coverageSourceDirs)
                 sourceDirectories = files(coverageSourceDirs)
-                executionData = files(["${project.buildDir}/jacoco/${testTaskName}.exec"])
-                //todo: add in espresso report once tests are created
+
+                executionData = fileTree(dir: "$buildDir", includes: [
+                        "jacoco/${testTaskName}.exec",
+                        "outputs/code-coverage/connected/*coverage.ec"
+                ])
             }
         }
     }
