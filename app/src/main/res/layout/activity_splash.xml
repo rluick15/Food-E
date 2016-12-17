@@ -8,6 +8,7 @@
 
     <!--To be replaced by an image view-->
     <TextView
+        android:id="@+id/splashText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Splash Screen"
