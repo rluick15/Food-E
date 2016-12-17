@@ -1,6 +1,6 @@
 package com.richluick.foode.splash;
 
-import android.content.Context;
+import android.app.Activity;
 import android.content.Intent;
 
 import org.junit.Before;
@@ -19,7 +19,7 @@ import static org.mockito.Mockito.verify;
 public class SplashNavigatorImplTest {
 
     @Mock
-    Context context;
+    Activity context;
 
     SplashNavigatorImpl splashNavigator;
 
@@ -32,5 +32,6 @@ public class SplashNavigatorImplTest {
     public void goToMainPageTest() {
         splashNavigator.goToMainPage();
         verify(context).startActivity(any(Intent.class));
+        verify(context).finish();
     }
 }

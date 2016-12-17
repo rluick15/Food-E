@@ -1,6 +1,6 @@
 package com.richluick.foode.splash.di;
 
-import android.content.Context;
+import android.app.Activity;
 import android.os.Handler;
 
 import com.richluick.foode.di.scope.ScreenScope;
@@ -22,16 +22,16 @@ import dagger.Provides;
 public class SplashModule {
 
     private SplashView splashView;
-    private Context context;
+    private Activity context;
 
-    public SplashModule(SplashView splashView, Context context) {
+    public SplashModule(SplashView splashView, Activity context) {
         this.splashView = splashView;
         this.context = context;
     }
 
     @Provides
     @ScreenScope
-    Context provideSplashContext() {
+    Activity provideSplashContext() {
         return context;
     }
 

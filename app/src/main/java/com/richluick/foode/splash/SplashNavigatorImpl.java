@@ -1,6 +1,6 @@
 package com.richluick.foode.splash;
 
-import android.content.Context;
+import android.app.Activity;
 import android.content.Intent;
 
 import com.richluick.foode.main.MainActivity;
@@ -12,15 +12,18 @@ import javax.inject.Inject;
  */
 public class SplashNavigatorImpl implements SplashNavigator {
 
-    private Context context;
+    private Activity context;
 
     @Inject
-    public SplashNavigatorImpl(Context context) {
+    public SplashNavigatorImpl(Activity context) {
         this.context = context;
     }
 
     @Override
     public void goToMainPage() {
-        context.startActivity(new Intent(context, MainActivity.class));
+        Intent intent = new Intent(context, MainActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        context.startActivity(intent);
+        context.finish();
     }
 }
