@@ -1,5 +1,6 @@
 package com.richluick.foode.di.module;
 
+import com.google.firebase.remoteconfig.FirebaseRemoteConfig;
 import com.richluick.foode.di.scope.ApplicationScope;
 import com.richluick.foode.splash.FirebaseRCUseCase;
 import com.richluick.foode.splash.FirebaseRCUseCaseImpl;
@@ -21,4 +22,9 @@ public class FirebaseModule {
         return useCase;
     }
 
+    @Provides
+    @ApplicationScope
+    FirebaseRemoteConfig provideFirebaseRemoteConfig() {
+        return FirebaseRemoteConfig.getInstance();
+    }
 }
