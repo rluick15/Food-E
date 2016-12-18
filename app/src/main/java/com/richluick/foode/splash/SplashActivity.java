@@ -21,8 +21,6 @@ public class SplashActivity extends BaseActivity implements SplashView {
         setContentView(R.layout.activity_splash);;
 
         injectDependencies();
-
-        splashPresenter.downloadSettingsFromFirebase();
     }
 
     /**
@@ -38,6 +36,12 @@ public class SplashActivity extends BaseActivity implements SplashView {
     protected void onStart() {
         super.onStart();
         splashPresenter.start();
+    }
+
+    @Override
+    protected void onPostResume() {
+        super.onPostResume();
+        splashPresenter.downloadSettingsFromFirebase();
     }
 
     @Override

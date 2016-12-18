@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.os.Handler;
 
 import com.richluick.foode.di.scope.ScreenScope;
+import com.richluick.foode.firebase.FirebaseRCUseCase;
+import com.richluick.foode.firebase.FirebaseRCUseCaseImpl;
 import com.richluick.foode.splash.SplashNavigator;
 import com.richluick.foode.splash.SplashNavigatorImpl;
 import com.richluick.foode.splash.SplashPresenter;
@@ -57,5 +59,11 @@ public class SplashModule {
     @ScreenScope
     Handler provideSplashHandler() {
         return new Handler();
+    }
+
+    @Provides
+    @ScreenScope
+    FirebaseRCUseCase provideFirebaseRCUseCase(FirebaseRCUseCaseImpl useCase) {
+        return useCase;
     }
 }

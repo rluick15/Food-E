@@ -1,4 +1,4 @@
-package com.richluick.foode.splash;
+package com.richluick.foode.firebase;
 
 import com.richluick.foode.usecase.SimpleUseCase;
 

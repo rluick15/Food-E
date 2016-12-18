@@ -2,6 +2,7 @@ package com.richluick.foode.splash;
 
 import android.os.Handler;
 
+import com.richluick.foode.firebase.FirebaseRCUseCase;
 import com.richluick.foode.usecase.UseCaseCallback;
 
 import javax.inject.Inject;

@@ -40,6 +40,7 @@ public class FoodeApplication extends Application implements SubcomponentBuilder
                 .setDeveloperModeEnabled(BuildConfig.DEBUG)
                 .build();
         firebaseRemoteConfig.setConfigSettings(configSettings);
+        firebaseRemoteConfig.setDefaults(R.xml.remote_config_defaults);
     }
 
     @Override

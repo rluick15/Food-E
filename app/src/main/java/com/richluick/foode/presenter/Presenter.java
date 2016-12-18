@@ -7,7 +7,9 @@ package com.richluick.foode.presenter;
  */
 public interface Presenter {
 
+    //used to initialize any values in the presenter on the onstart method. Things like EventBus or Butterknife
     void start();
 
+    //used to cancel or reset any values in the presenter
     void stop();
 }
