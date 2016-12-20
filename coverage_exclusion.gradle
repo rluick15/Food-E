@@ -7,6 +7,8 @@ ext.pureExclusionArray = [
         '**/Manifest.*',
         '**/android/support/*',
         '**/com/richluick/foode/R*.class',
+        '**/com/google/android/*',
+        '**/com/google/firebase/*',
 
         //exclude dagger related code
         '**/com/richluick/foode/di',

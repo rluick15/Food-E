@@ -27,13 +27,6 @@ public class FirebaseRCUseCaseImpl implements FirebaseRCUseCase {
 
     @Override
     public void execute(final UseCaseCallback<Object> callback) {
-        long cacheExpiration = 3600; // 1 hour in seconds.
-        // If in developer mode cacheExpiration is set to 0 so each fetch will retrieve values from
-        // the server.
-        if (firebaseRemoteConfig.getInfo().getConfigSettings().isDeveloperModeEnabled()) {
-            cacheExpiration = 0;
-        }
-
         firebaseRemoteConfig.fetch().addOnCompleteListener(context, new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
