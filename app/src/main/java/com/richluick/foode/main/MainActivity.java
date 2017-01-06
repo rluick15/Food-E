@@ -14,18 +14,25 @@ import android.view.View;
 
 import com.richluick.foode.R;
 import com.richluick.foode.activity.BaseActivity;
+import com.richluick.foode.di.subcomponent.SubcomponentBuilder;
 import com.richluick.foode.di.subcomponent.SubcomponentBuilderProvider;
 import com.richluick.foode.main.di.MainActivityComponent;
 import com.richluick.foode.main.di.MainActivityModule;
 
+import java.util.Map;
+
 import javax.inject.Inject;
+import javax.inject.Provider;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class MainActivity extends BaseActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class MainActivity extends BaseActivity implements NavigationView.OnNavigationItemSelectedListener,
+        SubcomponentBuilderProvider {
 
+    @Inject
+    Map<Class<?>, Provider<SubcomponentBuilder>> subcomponentBuilders;
     @Inject
     MainActivityNavigator mainActivityNavigator;
 
@@ -53,6 +60,9 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
         toggle.syncState();
 
         navigationView.setNavigationItemSelectedListener(this);
+
+        //launch the homepage fragment once setup is complete
+        mainActivityNavigator.launchHomepage();
     }
 
     /**
@@ -123,5 +133,10 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
     void onFABClick(View view) {
         Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                 .setAction("Action", null).show();
+    }
+
+    @Override
+    public SubcomponentBuilder getSubcomponentBuilder(Class<?> builderClass) {
+        return subcomponentBuilders.get(builderClass).get();
     }
 }
