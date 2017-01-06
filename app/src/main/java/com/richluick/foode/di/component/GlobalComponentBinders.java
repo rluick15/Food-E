@@ -2,6 +2,7 @@ package com.richluick.foode.di.component;
 
 import com.richluick.foode.di.subcomponent.SubcomponentBuilder;
 import com.richluick.foode.di.subcomponent.SubcomponentKey;
+import com.richluick.foode.main.di.MainActivityComponent;
 import com.richluick.foode.splash.di.SplashComponent;
 
 import dagger.Binds;
@@ -14,7 +15,8 @@ import dagger.multibindings.IntoMap;
  * Contains all direct subcomponents to the globalcomponent
  */
 @Module(subcomponents = {
-        SplashComponent.class
+        SplashComponent.class,
+        MainActivityComponent.class
 })
 public abstract class GlobalComponentBinders {
 
@@ -22,4 +24,9 @@ public abstract class GlobalComponentBinders {
     @IntoMap
     @SubcomponentKey(SplashComponent.Builder.class)
     public abstract SubcomponentBuilder splashActivity(SplashComponent.Builder builder);
+
+    @Binds
+    @IntoMap
+    @SubcomponentKey(MainActivityComponent.Builder.class)
+    public abstract SubcomponentBuilder mainActivity(MainActivityComponent.Builder builder);
 }

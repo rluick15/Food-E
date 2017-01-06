@@ -14,12 +14,20 @@ import android.view.View;
 
 import com.richluick.foode.R;
 import com.richluick.foode.activity.BaseActivity;
+import com.richluick.foode.di.subcomponent.SubcomponentBuilderProvider;
+import com.richluick.foode.main.di.MainActivityComponent;
+import com.richluick.foode.main.di.MainActivityModule;
+
+import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class MainActivity extends BaseActivity implements NavigationView.OnNavigationItemSelectedListener {
+
+    @Inject
+    MainActivityNavigator mainActivityNavigator;
 
     @BindView(R.id.toolbar)
     Toolbar toolbar;
@@ -37,12 +45,23 @@ public class MainActivity extends BaseActivity implements NavigationView.OnNavig
         setSupportActionBar(toolbar);
         ButterKnife.bind(this);
 
+        injectDependencies();
+
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
         navigationView.setNavigationItemSelectedListener(this);
+    }
+
+    /**
+     * Performs the dagger injecting operation for this activity class
+     */
+    private void injectDependencies() {
+        MainActivityComponent.Builder builder = (MainActivityComponent.Builder)
+                ((SubcomponentBuilderProvider) getApplication()).getSubcomponentBuilder(MainActivityComponent.Builder.class);
+        builder.buildMainActivityComponent(new MainActivityModule(this)).build().inject(this);
     }
 
     @Override
