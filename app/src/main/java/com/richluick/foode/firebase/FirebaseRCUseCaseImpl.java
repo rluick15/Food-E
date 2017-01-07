@@ -27,7 +27,12 @@ public class FirebaseRCUseCaseImpl implements FirebaseRCUseCase {
 
     @Override
     public void execute(final UseCaseCallback<Object> callback) {
-        firebaseRemoteConfig.fetch().addOnCompleteListener(context, new OnCompleteListener<Void>() {
+        long cacheExpiration = 3600; // 1 hour in seconds.
+        if (firebaseRemoteConfig.getInfo().getConfigSettings().isDeveloperModeEnabled()) {
+            cacheExpiration = 0;
+        }
+
+        firebaseRemoteConfig.fetch(cacheExpiration).addOnCompleteListener(context, new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 if (task.isSuccessful()) {
@@ -38,10 +43,10 @@ public class FirebaseRCUseCaseImpl implements FirebaseRCUseCase {
                 }
             }
         });
-
-        //todo: remove this. There is currently a bug in firebase where the fetch callbacks are not called
-        //todo: see http://stackoverflow.com/questions/37311582/firebase-remote-config-cant-read-any-values-but-fetch-is-successful
-        firebaseRemoteConfig.activateFetched();
-        callback.onCompleted(null); //no return value
+//
+//        //todo: remove this. There is currently a bug in firebase where the fetch callbacks are not called
+//        //todo: see http://stackoverflow.com/questions/37311582/firebase-remote-config-cant-read-any-values-but-fetch-is-successful
+//        firebaseRemoteConfig.activateFetched();
+//        callback.onCompleted(null); //no return value
     }
 }

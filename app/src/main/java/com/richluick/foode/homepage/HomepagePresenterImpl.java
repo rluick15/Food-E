@@ -1,5 +1,11 @@
 package com.richluick.foode.homepage;
 
+import com.google.firebase.remoteconfig.FirebaseRemoteConfig;
+import com.richluick.foode.utils.Constants;
+
+import java.util.Arrays;
+import java.util.List;
+
 import javax.inject.Inject;
 
 /**
@@ -8,10 +14,12 @@ import javax.inject.Inject;
 public class HomepagePresenterImpl implements HomepagePresenter {
 
     private HomepageView homepageView;
+    private FirebaseRemoteConfig firebaseRemoteConfig;
 
     @Inject
-    public HomepagePresenterImpl(HomepageView homepageView) {
+    public HomepagePresenterImpl(HomepageView homepageView, FirebaseRemoteConfig firebaseRemoteConfig) {
         this.homepageView = homepageView;
+        this.firebaseRemoteConfig = firebaseRemoteConfig;
     }
 
     @Override
@@ -21,6 +29,18 @@ public class HomepagePresenterImpl implements HomepagePresenter {
 
     @Override
     public void stop() {
+
+    }
+
+    /**
+     * Gets the String list of element types from Firebase RC and returns it to the HomepageView to
+     * use to set up the element list on the homepage
+     */
+    @Override
+    public void getHomepageElementList() {
+        firebaseRemoteConfig.activateFetched();
+        String elementList = firebaseRemoteConfig.getString(Constants.FIREBASE_ELEMENT_LIST);
+        List<String> elementListArray = Arrays.asList(elementList.split(","));
 
     }
 }

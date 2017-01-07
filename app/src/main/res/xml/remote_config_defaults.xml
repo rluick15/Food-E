@@ -2,7 +2,7 @@
 <!-- START xml_defaults -->
 <defaultsMap>
     <entry>
-        <key>Test</key>
-        <value>Test</value>
+        <key>elementList</key>
+        <value>joke, fact</value>
     </entry>
 </defaultsMap>

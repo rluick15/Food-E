@@ -5,9 +5,9 @@ package com.richluick.foode.usecase;
  *
  * A basic callback interface for use cases. Can be extended for additional functionality
  */
-public interface UseCaseCallback<I> {
+public interface UseCaseCallback<R> {
 
-    void onCompleted(I result);
+    void onCompleted(R result);
 
     void onError(String error);
 }

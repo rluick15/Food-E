@@ -1,6 +1,8 @@
 package com.richluick.foode.homepage.di;
 
 import com.richluick.foode.di.scope.ScreenScope;
+import com.richluick.foode.homepage.HomepagePresenter;
+import com.richluick.foode.homepage.HomepagePresenterImpl;
 import com.richluick.foode.homepage.HomepageView;
 
 import dagger.Module;
@@ -22,5 +24,11 @@ public class HomepageModule {
     @ScreenScope
     HomepageView provideHomepageView() {
         return homepageView;
+    }
+
+    @Provides
+    @ScreenScope
+    HomepagePresenter provideHomepagePresenter(HomepagePresenterImpl homepagePresenter) {
+        return homepagePresenter;
     }
 }

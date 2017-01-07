@@ -13,12 +13,17 @@ import com.richluick.foode.fragment.BaseFragment;
 import com.richluick.foode.homepage.di.HomepageComponent;
 import com.richluick.foode.homepage.di.HomepageModule;
 
+import javax.inject.Inject;
+
 import butterknife.ButterKnife;
 
 /**
  * The fragment containing the view for the homepage
  */
 public class HomepageFragment extends BaseFragment implements HomepageView {
+
+    @Inject
+    HomepagePresenter homepagePresenter;
 
     public HomepageFragment() {} // Required empty public constructor
 
@@ -37,6 +42,8 @@ public class HomepageFragment extends BaseFragment implements HomepageView {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         injectDependencies();
+
+        homepagePresenter.getHomepageElementList();
     }
 
     /**
