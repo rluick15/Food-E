@@ -1,7 +1,9 @@
 package com.richluick.foode.homepage;
 
 import com.google.firebase.remoteconfig.FirebaseRemoteConfig;
+import com.richluick.foode.elements.ElementView;
 import com.richluick.foode.utils.Constants;
+import com.richluick.foode.utils.Converter;
 
 import java.util.Arrays;
 import java.util.List;
@@ -15,11 +17,14 @@ public class HomepagePresenterImpl implements HomepagePresenter {
 
     private HomepageView homepageView;
     private FirebaseRemoteConfig firebaseRemoteConfig;
+    private Converter<String, ElementView> elementViewFactory;
 
     @Inject
-    public HomepagePresenterImpl(HomepageView homepageView, FirebaseRemoteConfig firebaseRemoteConfig) {
+    public HomepagePresenterImpl(HomepageView homepageView, FirebaseRemoteConfig firebaseRemoteConfig,
+                                 Converter<String, ElementView> elementViewFactory) {
         this.homepageView = homepageView;
         this.firebaseRemoteConfig = firebaseRemoteConfig;
+        this.elementViewFactory = elementViewFactory;
     }
 
     @Override

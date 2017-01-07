@@ -12,7 +12,8 @@ import dagger.Subcomponent;
 @ActivityScope
 @Subcomponent(modules = {
         MainActivityComponentBinders.class,
-        MainActivityModule.class
+        MainActivityModule.class,
+        ElementViewFactoryModule.class
 })
 public interface MainActivityComponent {
 
