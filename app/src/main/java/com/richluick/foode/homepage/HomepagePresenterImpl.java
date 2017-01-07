@@ -50,7 +50,11 @@ public class HomepagePresenterImpl implements HomepagePresenter {
         List<ElementView> elementViewList = new ArrayList<>();
         for (String elementType : elementTypeArray) {
             ElementView elementView = elementViewFactory.convert(elementType);
-            elementViewList.add(elementView);
+            if (elementView != null) {
+                elementViewList.add(elementView);
+            }
         }
+
+        homepageView.setupElementViewAdapter(elementViewList);
     }
 }

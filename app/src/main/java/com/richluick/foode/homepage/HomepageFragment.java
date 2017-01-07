@@ -9,9 +9,12 @@ import android.view.ViewGroup;
 
 import com.richluick.foode.R;
 import com.richluick.foode.di.subcomponent.SubcomponentBuilderProvider;
+import com.richluick.foode.elements.ElementView;
 import com.richluick.foode.fragment.BaseFragment;
 import com.richluick.foode.homepage.di.HomepageComponent;
 import com.richluick.foode.homepage.di.HomepageModule;
+
+import java.util.List;
 
 import javax.inject.Inject;
 
@@ -65,5 +68,10 @@ public class HomepageFragment extends BaseFragment implements HomepageView {
         HomepageComponent.Builder builder = (HomepageComponent.Builder)
                 ((SubcomponentBuilderProvider) getActivity()).getSubcomponentBuilder(HomepageComponent.Builder.class);
         builder.buildHomepageComponent(new HomepageModule(this)).build().inject(this);
+    }
+
+    @Override
+    public void setupElementViewAdapter(List<ElementView> elementViewList) {
+
     }
 }
