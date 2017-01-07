@@ -18,7 +18,7 @@ import butterknife.ButterKnife;
 /**
  * The fragment containing the view for the homepage
  */
-public class HomepageFragment extends BaseFragment {
+public class HomepageFragment extends BaseFragment implements HomepageView {
 
     public HomepageFragment() {} // Required empty public constructor
 
@@ -45,6 +45,6 @@ public class HomepageFragment extends BaseFragment {
     private void injectDependencies() {
         HomepageComponent.Builder builder = (HomepageComponent.Builder)
                 ((SubcomponentBuilderProvider) getActivity()).getSubcomponentBuilder(HomepageComponent.Builder.class);
-        builder.buildHomepageComponent(new HomepageModule()).build().inject(this);
+        builder.buildHomepageComponent(new HomepageModule(this)).build().inject(this);
     }
 }
