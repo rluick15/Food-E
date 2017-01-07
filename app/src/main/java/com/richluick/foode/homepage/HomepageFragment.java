@@ -46,6 +46,18 @@ public class HomepageFragment extends BaseFragment implements HomepageView {
         homepagePresenter.getHomepageElementList();
     }
 
+    @Override
+    public void onStart() {
+        super.onStart();
+        homepagePresenter.start();
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        homepagePresenter.stop();
+    }
+
     /**
      * Performs the dagger injecting operation for this activity class
      */

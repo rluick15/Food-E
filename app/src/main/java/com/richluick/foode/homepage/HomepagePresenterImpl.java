@@ -38,9 +38,10 @@ public class HomepagePresenterImpl implements HomepagePresenter {
      */
     @Override
     public void getHomepageElementList() {
-        firebaseRemoteConfig.activateFetched();
-        String elementList = firebaseRemoteConfig.getString(Constants.FIREBASE_ELEMENT_LIST);
-        List<String> elementListArray = Arrays.asList(elementList.split(","));
+        String elementTypes = firebaseRemoteConfig.getString(Constants.FIREBASE_ELEMENT_LIST);
+        List<String> elementTypeArray = Arrays.asList(elementTypes.split(","));
+        for (String elementType : elementTypeArray) {
 
+        }
     }
 }
