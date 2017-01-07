@@ -2,6 +2,8 @@ package com.richluick.foode.elements.elements.joke;
 
 import android.view.View;
 
+import com.richluick.foode.R;
+
 import javax.inject.Inject;
 
 /**
@@ -12,12 +14,11 @@ public class JokeElementViewImpl implements JokeElementView {
     protected JokeElementPresenter jokeElementPresenter;
 
     @Inject
-    public JokeElementViewImpl() {
-    }
+    public JokeElementViewImpl() {}
 
     @Override
     public int getLayoutResId() {
-        return 0;
+        return R.layout.joke_element;
     }
 
     //todo: might want to move Butterknife bind to a custom view passed into this method. This

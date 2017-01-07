@@ -3,6 +3,8 @@ package com.richluick.foode.homepage;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,6 +21,7 @@ import java.util.List;
 
 import javax.inject.Inject;
 
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
 /**
@@ -30,6 +33,9 @@ public class HomepageFragment extends BaseFragment implements HomepageView {
     HomepagePresenter homepagePresenter;
     @Inject
     ElementRecyclerViewAdapter adapter;
+
+    @BindView(R.id.recyclerView)
+    RecyclerView recyclerView;
 
     public HomepageFragment() {} // Required empty public constructor
 
@@ -47,7 +53,13 @@ public class HomepageFragment extends BaseFragment implements HomepageView {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
         injectDependencies();
+
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext(),
+                LinearLayoutManager.VERTICAL, false);
+        recyclerView.setLayoutManager(linearLayoutManager);
+        recyclerView.setAdapter(adapter);
 
         homepagePresenter.getHomepageElementList();
     }

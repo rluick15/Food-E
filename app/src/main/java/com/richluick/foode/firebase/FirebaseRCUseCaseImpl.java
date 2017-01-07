@@ -1,10 +1,7 @@
 package com.richluick.foode.firebase;
 
 import android.app.Activity;
-import android.support.annotation.NonNull;
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.remoteconfig.FirebaseRemoteConfig;
 import com.richluick.foode.usecase.UseCaseCallback;
 
@@ -27,26 +24,26 @@ public class FirebaseRCUseCaseImpl implements FirebaseRCUseCase {
 
     @Override
     public void execute(final UseCaseCallback<Object> callback) {
-        long cacheExpiration = 3600; // 1 hour in seconds.
-        if (firebaseRemoteConfig.getInfo().getConfigSettings().isDeveloperModeEnabled()) {
-            cacheExpiration = 0;
-        }
-
-        firebaseRemoteConfig.fetch(cacheExpiration).addOnCompleteListener(context, new OnCompleteListener<Void>() {
-            @Override
-            public void onComplete(@NonNull Task<Void> task) {
-                if (task.isSuccessful()) {
-                    firebaseRemoteConfig.activateFetched();
-                    callback.onCompleted(null); //no return value
-                } else {
-                    callback.onError("");
-                }
-            }
-        });
+//        long cacheExpiration = 3600; // 1 hour in seconds.
+//        if (firebaseRemoteConfig.getInfo().getConfigSettings().isDeveloperModeEnabled()) {
+//            cacheExpiration = 0;
+//        }
 //
-//        //todo: remove this. There is currently a bug in firebase where the fetch callbacks are not called
-//        //todo: see http://stackoverflow.com/questions/37311582/firebase-remote-config-cant-read-any-values-but-fetch-is-successful
-//        firebaseRemoteConfig.activateFetched();
-//        callback.onCompleted(null); //no return value
+//        firebaseRemoteConfig.fetch(cacheExpiration).addOnCompleteListener(context, new OnCompleteListener<Void>() {
+//            @Override
+//            public void onComplete(@NonNull Task<Void> task) {
+//                if (task.isSuccessful()) {
+//                    firebaseRemoteConfig.activateFetched();
+//                    callback.onCompleted(null); //no return value
+//                } else {
+//                    callback.onError("");
+//                }
+//            }
+//        });
+
+        //todo: remove this. There is currently a bug in firebase where the fetch callbacks are not called
+        //todo: see http://stackoverflow.com/questions/37311582/firebase-remote-config-cant-read-any-values-but-fetch-is-successful
+        firebaseRemoteConfig.activateFetched();
+        callback.onCompleted(null); //no return value
     }
 }
