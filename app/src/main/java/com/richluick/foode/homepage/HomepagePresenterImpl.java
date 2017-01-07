@@ -5,6 +5,7 @@ import com.richluick.foode.elements.ElementView;
 import com.richluick.foode.utils.Constants;
 import com.richluick.foode.utils.Converter;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -45,8 +46,11 @@ public class HomepagePresenterImpl implements HomepagePresenter {
     public void getHomepageElementList() {
         String elementTypes = firebaseRemoteConfig.getString(Constants.FIREBASE_ELEMENT_LIST);
         List<String> elementTypeArray = Arrays.asList(elementTypes.split(","));
-        for (String elementType : elementTypeArray) {
 
+        List<ElementView> elementViewList = new ArrayList<>();
+        for (String elementType : elementTypeArray) {
+            ElementView elementView = elementViewFactory.convert(elementType);
+            elementViewList.add(elementView);
         }
     }
 }

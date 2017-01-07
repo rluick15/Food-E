@@ -2,6 +2,7 @@ package com.richluick.foode.main.di;
 
 import com.richluick.foode.di.scope.ActivityScope;
 import com.richluick.foode.di.subcomponent.SubcomponentBuilder;
+import com.richluick.foode.elements.di.ElementViewFactoryModule;
 import com.richluick.foode.main.MainActivity;
 
 import dagger.Subcomponent;
