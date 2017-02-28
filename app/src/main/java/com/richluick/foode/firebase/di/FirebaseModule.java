@@ -1,4 +1,4 @@
-package com.richluick.foode.di.module;
+package com.richluick.foode.firebase.di;
 
 import com.google.firebase.remoteconfig.FirebaseRemoteConfig;
 import com.richluick.foode.di.scope.ApplicationScope;

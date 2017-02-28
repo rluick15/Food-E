@@ -2,7 +2,7 @@ package com.richluick.foode.di.component;
 
 import com.richluick.foode.FoodeApplication;
 import com.richluick.foode.di.module.AndroidContextModule;
-import com.richluick.foode.di.module.FirebaseModule;
+import com.richluick.foode.firebase.di.FirebaseModule;
 import com.richluick.foode.di.scope.ApplicationScope;
 import com.richluick.foode.elements.di.ElementModule;
 

@@ -26,6 +26,8 @@ public class HomepagePresenterImpl implements HomepagePresenter {
         this.homepageView = homepageView;
         this.firebaseRemoteConfig = firebaseRemoteConfig;
         this.elementViewFactory = elementViewFactory;
+
+
     }
 
     @Override

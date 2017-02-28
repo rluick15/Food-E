@@ -5,6 +5,9 @@ package com.richluick.foode.utils;
  */
 public class Constants {
 
+    //api utils
+    public static final String BASE_API_URL = ""; //todo; get url
+
     //firebase rc keys
     public static final String FIREBASE_ELEMENT_LIST = "elementList";
 
