@@ -1,6 +1,6 @@
 # Food-E
 
-Find recipes, indgridients, and nutrition information with Food-E! 
+Find recipes, ingredients, and nutrition information with Food-E! 
 
 This app is built off of the Spoonacular Food API and Recipe API: https://spoonacular.com/food-api
 
