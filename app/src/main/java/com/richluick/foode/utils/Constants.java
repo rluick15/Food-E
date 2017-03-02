@@ -6,7 +6,7 @@ package com.richluick.foode.utils;
 public class Constants {
 
     //api utils
-    public static final String BASE_API_URL = ""; //todo; get url
+    public static final String BASE_API_URL = "https://spoonacular-recipe-food-nutrition-v1.p.mashape.com/";
 
     //firebase rc keys
     public static final String FIREBASE_ELEMENT_LIST = "elementList";

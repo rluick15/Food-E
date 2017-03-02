@@ -14,7 +14,8 @@ public class JokeElementViewImpl implements JokeElementView {
     protected JokeElementPresenter jokeElementPresenter;
 
     @Inject
-    public JokeElementViewImpl() {}
+    public JokeElementViewImpl() {
+    }
 
     @Override
     public int getLayoutResId() {
